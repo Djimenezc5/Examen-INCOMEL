@@ -1,0 +1,66 @@
+﻿@model Proyecto_INCOMEL.Models.Empleado
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Datos Empleado</h2>
+
+<div>
+    <h4>Empleado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DPI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DPI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantidadHijos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantidadHijos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalarioBase)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalarioBase)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCreacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

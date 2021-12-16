@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Proyecto_INCOMEL.Models.Empleado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Empleados</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DPI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CantidadHijos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalarioBase)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DPI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CantidadHijos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalarioBase)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaCreacion)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
