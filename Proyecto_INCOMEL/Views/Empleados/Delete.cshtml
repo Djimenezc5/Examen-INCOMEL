@@ -4,11 +4,10 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Eliminar Empleado</h2>
+<h2>Eliminar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>¿Estás seguro de eliminar al empleado?</h3>
 <div>
-    <h4>Empleado</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -31,7 +30,7 @@
             @Html.DisplayNameFor(model => model.CantidadHijos)
         </dt>
 
-        <dd>
+        <dd id="hijos">
             @Html.DisplayFor(model => model.CantidadHijos)
         </dd>
 
@@ -39,7 +38,7 @@
             @Html.DisplayNameFor(model => model.SalarioBase)
         </dt>
 
-        <dd>
+        <dd id="salario">
             @Html.DisplayFor(model => model.SalarioBase)
         </dd>
 
@@ -60,12 +59,90 @@
         </dd>
 
     </dl>
+    <div id="calculos">
+        <br />
+        <script>
 
-    @using (Html.BeginForm()) {
+            //Obtener el salario base
+            var input = document.getElementById("salario")
+            console.log(input.innerText)
+            //Elemento para añadir un appendChild
+            var div = document.getElementById("calculos")
+
+            //Bono por decreto
+            var label = document.createElement("label")
+            label.innerText = "Bono decreto: Q. 250.00"
+            div.appendChild(label)
+
+            //Igss
+            var oper = input.innerText * 0.0483
+            var igss = oper.toFixed(2)
+            console.log(igss)
+            //Crear un elementos
+            var label1 = document.createElement("label")
+            var br1 = document.createElement("br")
+            //Pintar el label y salto de linea
+            label1.innerText = "IGSS: Q. " + igss
+            div.appendChild(br1)
+            div.appendChild(label1)
+
+            //irtra
+            var oper2 = input.innerText * 0.01
+            var irtra = oper2.toFixed(2)
+            console.log(irtra)
+            //Crear un elementos
+            var label2 = document.createElement("label")
+            var br2 = document.createElement("br")
+            //Pintar el label y salto de linea
+            label2.innerText = "IRTRA: Q. " + irtra
+            div.appendChild(br2)
+            div.appendChild(label2)
+
+            //Bono paternidad
+            //Obtener el salario base
+            var input2 = document.getElementById("hijos")
+            var BP = input2.innerText * 133
+            console.log(BP)
+            //Crear un elementos
+            var label3 = document.createElement("label")
+            var br3 = document.createElement("br")
+            //Pintar el label y salto de linea
+            label3.innerText = "Bono por paternidad: Q. " + BP
+            div.appendChild(br3)
+            div.appendChild(label3)
+
+            //Salario Total
+            var oper3 = parseFloat(input.innerText)+250+BP
+            var ST = oper3.toFixed(2)
+            console.log(ST)
+            //Crear un elementos
+            var label4 = document.createElement("label")
+            var br4 = document.createElement("br")
+            //Pintar el label y salto de linea
+            label4.innerText = "Salario total: Q. " + ST
+            div.appendChild(br4)
+            div.appendChild(label4)
+
+            //Salario Liquido
+            var oper4 = ST-igss-irtra
+            var SL = oper4.toFixed(2)
+            console.log(SL)
+            //Crear un elementos
+            var label5 = document.createElement("label")
+            var br4 = document.createElement("br")
+            //Pintar el label y salto de linea
+            label5.innerText = "Salario liquido: Q. " + SL
+            div.appendChild(br4)
+            div.appendChild(label5)
+        </script>
+    </div>
+
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
             @Html.ActionLink("Regresar", "Index")
         </div>
     }

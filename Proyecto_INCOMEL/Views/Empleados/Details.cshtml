@@ -30,7 +30,7 @@
             @Html.DisplayNameFor(model => model.CantidadHijos)
         </dt>
 
-        <dd>
+        <dd id="hijos">
             @Html.DisplayFor(model => model.CantidadHijos)
         </dd>
 
@@ -38,7 +38,7 @@
             @Html.DisplayNameFor(model => model.SalarioBase)
         </dt>
 
-        <dd>
+        <dd id="salario">
             @Html.DisplayFor(model => model.SalarioBase)
         </dd>
 
@@ -59,8 +59,85 @@
         </dd>
 
     </dl>
+    <div id="calculos">
+         <br />
+        <script>
+            
+            //Obtener el salario base
+            var input = document.getElementById("salario")
+            console.log(input.innerText)
+            //Elemento para añadir un appendChild
+            var div = document.getElementById("calculos")
+
+            //Bono por decreto
+            var label = document.createElement("label")
+            label.innerText = "Bono decreto: Q. 250.00"
+            div.appendChild(label) 
+
+            //Igss
+            var oper = input.innerText * 0.0483
+            var igss = oper.toFixed(2)
+            console.log(igss)
+            //Crear un elementos
+            var label1 = document.createElement("label")
+            var br1 = document.createElement("br")
+            //Pintar el label y salto de linea
+            label1.innerText = "IGSS: Q. " + igss
+            div.appendChild(br1) 
+            div.appendChild(label1)
+
+            //irtra
+            var oper2 = input.innerText * 0.01
+            var irtra = oper2.toFixed(2)
+            console.log(irtra)
+            //Crear un elementos
+            var label2 = document.createElement("label")
+            var br2 = document.createElement("br")
+            //Pintar el label y salto de linea
+            label2.innerText = "IRTRA: Q. " + irtra
+            div.appendChild(br2) 
+            div.appendChild(label2)
+
+            //Bono paternidad
+            //Obtener el salario base
+            var input2 = document.getElementById("hijos")
+            var BP = input2.innerText * 133
+            console.log(BP)
+            //Crear un elementos
+            var label3 = document.createElement("label")
+            var br3 = document.createElement("br")
+            //Pintar el label y salto de linea
+            label3.innerText = "Bono por paternidad: Q. " + BP
+            div.appendChild(br3) 
+            div.appendChild(label3)
+
+            //Salario Total
+            var oper3 = parseFloat(input.innerText)+250+BP
+            var ST = oper3.toFixed(2)
+            console.log(ST)
+            //Crear un elementos
+            var label4 = document.createElement("label")
+            var br4 = document.createElement("br")
+            //Pintar el label y salto de linea
+            label4.innerText = "Salario total: Q. " + ST
+            div.appendChild(br4) 
+            div.appendChild(label4)
+
+            //Salario Liquido
+            var oper4 = ST-igss-irtra
+            var SL = oper4.toFixed(2)
+            console.log(SL)
+            //Crear un elementos
+            var label5 = document.createElement("label")
+            var br4 = document.createElement("br")
+            //Pintar el label y salto de linea
+            label5.innerText = "Salario liquido: Q. " + SL
+            div.appendChild(br4) 
+            div.appendChild(label5)
+        </script>
+    </div>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Regresar", "Index")
 </p>

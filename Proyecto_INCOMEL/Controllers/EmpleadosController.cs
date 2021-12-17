@@ -52,6 +52,7 @@ namespace Proyecto_INCOMEL.Controllers
             if (ModelState.IsValid)
             {
                 empleado.FechaCreacion = DateTime.Now;
+                empleado.Usuario = Session["User"].ToString();
                 db.Empleados.Add(empleado);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -128,6 +128,7 @@ namespace Proyecto_INCOMEL.Controllers
             }
             if (IsValid(model))
             {
+                Session["User"] = model.Email;
                 return RedirectToLocal(url);
             }
             else
