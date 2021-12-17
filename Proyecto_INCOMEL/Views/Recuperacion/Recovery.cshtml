@@ -1,0 +1,36 @@
+﻿
+@{
+    //Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Recovery</title>
+</head>
+<body>
+    <div>
+        <div>
+            <h2>Recuperación de contraseña</h2>
+            <div class="form-horizontal">
+                @using (Html.BeginForm("Recovery", "Recuperacion", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="contra">Ingrese una nueva contraseña: </label>
+                        <input class="form-control text-box single-line" id="contra" type="text" name="contra" />
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Enviar" class="btn btn-default" />
+                        </div>
+                    </div>
+                    <div>
+                        @ViewBag.Resultado
+                    </div>
+                }
+            </div>
+        </div>
+</body>
+</html>

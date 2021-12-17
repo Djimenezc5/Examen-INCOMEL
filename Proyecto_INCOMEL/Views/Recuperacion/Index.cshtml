@@ -1,0 +1,33 @@
+﻿@{
+    //Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h2>Recuperación de contraseña</h2>
+        <div class="form-horizontal">
+            @using (Html.BeginForm("Index", "Recuperacion", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Correo">Ingrese un Correo electronico: </label>
+                    <input class="form-control text-box single-line" id="Correo" type="text" name="Correo" />
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Enviar" class="btn btn-default" />
+                    </div>
+                </div>
+                <div>
+                    @ViewBag.Resultado
+                </div>
+            }
+        </div>
+</body>
+</html>

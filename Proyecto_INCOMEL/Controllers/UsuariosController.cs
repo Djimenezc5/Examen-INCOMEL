@@ -47,6 +47,7 @@ namespace Proyecto_INCOMEL.Controllers
         // POST: Usuarios/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Nombre,FechaNacimiento,Email,Contra")] Usuario usuario)

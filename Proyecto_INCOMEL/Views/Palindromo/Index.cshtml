@@ -1,6 +1,6 @@
 ﻿
 @{
-    //Layout = null;
+//Layout = null;
 }
 
 <!DOCTYPE html>
@@ -13,17 +13,43 @@
 <body>
     <h2>Encontrar los palíndromos del texto</h2>
     <div class="form-horizontal">
-        <div class="form-group">
-            <label class="control-label col-md-2" for="Polindromo">Ingrese un palindromo: </label>
-            <input class="form-control text-box single-line" id="Polindromo" type="text" />
-        </div>
-        <div class="form-group">
-            
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Buscar" class="btn btn-default" />
+        @using (Html.BeginForm("Index", "Palindromo", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Polindromo">Ingrese un palindromo: </label>
+                <input class="form-control text-box single-line" id="Polindromo" type="text" name="palabra" />
             </div>
-            
-        </div>
+            <div class="form-group">
+
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Buscar" class="btn btn-default" />
+                </div>
+            </div>
+            <div>
+                @{
+                    if (ViewBag.Resultado != null)
+                    {
+                        List<string> listelement = ViewBag.Resultado;
+                        int cantidad = listelement.Count();
+                        if (cantidad > 0)
+                        {
+                            foreach (var item in listelement)
+                            {
+                                <label> => @item.ToString()</label> <br />
+
+                            }
+                        
+                            <label>Palíndromos encontrados: @cantidad</label>
+                        }
+
+                    }
+                    if (!string.IsNullOrEmpty(ViewBag.Respuesta))
+                    {
+                        <label>@ViewBag.Respuesta</label>
+                    }
+                }
+            </div>
+        }
     </div>
 </body>
 </html>

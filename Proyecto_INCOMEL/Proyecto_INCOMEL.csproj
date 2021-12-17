@@ -130,6 +130,7 @@
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PalindromoController.cs" />
+    <Compile Include="Controllers\RecuperacionController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -188,6 +189,8 @@
     <Content Include="Views\Empleados\Index.cshtml" />
     <Content Include="Views\Usuarios\Login.cshtml" />
     <Content Include="Views\Palindromo\Index.cshtml" />
+    <Content Include="Views\Recuperacion\Index.cshtml" />
+    <Content Include="Views\Recuperacion\Recovery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

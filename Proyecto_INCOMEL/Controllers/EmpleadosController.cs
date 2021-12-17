@@ -82,9 +82,11 @@ namespace Proyecto_INCOMEL.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,DPI,Nombre,CantidadHijos,SalarioBase,Usuario,FechaCreación")] Empleado empleado)
-        {
+         {
             if (ModelState.IsValid)
             {
+                empleado.FechaCreacion = DateTime.Now;
+                empleado.Usuario = Session["User"].ToString();
                 db.Entry(empleado).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
